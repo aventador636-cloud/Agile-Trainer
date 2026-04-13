@@ -359,6 +359,7 @@ export type Database = {
       }
       users: {
         Row: {
+          avatar_url: string | null
           created_at: string
           current_streak: number
           id: string
@@ -370,6 +371,7 @@ export type Database = {
           xp: number
         }
         Insert: {
+          avatar_url?: string | null
           created_at?: string
           current_streak?: number
           id?: string
@@ -381,6 +383,7 @@ export type Database = {
           xp?: number
         }
         Update: {
+          avatar_url?: string | null
           created_at?: string
           current_streak?: number
           id?: string

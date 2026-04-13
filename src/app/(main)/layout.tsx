@@ -1,11 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useUserStore } from '@/store/user-store'
+import { supabase } from '@/lib/supabase'
 import { ROLE_LABELS, getLevelForXp, getXpProgress, type UserRole } from '@/lib/constants'
-import { BookOpen, Shield, LogOut, Trophy, ChevronRight, Menu, X } from 'lucide-react'
+import { BookOpen, Shield, LogOut, Trophy, ChevronRight, Menu, X, Camera } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/modules', icon: BookOpen, label: 'Модули' },
@@ -19,10 +21,40 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const hydrated = useUserStore((s) => s.hydrated)
   const setUser = useUserStore((s) => s.setUser)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (hydrated && !user) router.replace('/')
   }, [hydrated, user, router])
+
+  async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file || !user) return
+
+    setUploading(true)
+    const ext = file.name.split('.').pop()
+    const path = `${user.id}.${ext}`
+
+    const { error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(path, file, { upsert: true })
+
+    if (uploadError) {
+      setUploading(false)
+      return
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('avatars')
+      .getPublicUrl(path)
+
+    const url = `${publicUrl}?t=${Date.now()}`
+
+    await supabase.from('users').update({ avatar_url: url }).eq('id', user.id)
+    setUser({ ...user, avatar_url: url })
+    setUploading(false)
+  }
 
   useEffect(() => {
     setMobileMenuOpen(false)
@@ -58,12 +90,44 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </Link>
       </div>
 
+      {/* Hidden file input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleAvatarUpload}
+      />
+
       {/* User card */}
       <div className="mx-4 p-4 rounded-xl bg-white/[0.04] border border-white/[0.06]">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-sm font-bold text-white shrink-0">
-            {user.name.charAt(0).toUpperCase()}
-          </div>
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+            className="relative w-10 h-10 rounded-full shrink-0 group"
+          >
+            {user.avatar_url ? (
+              <Image
+                src={user.avatar_url}
+                alt={user.name}
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-sm font-bold text-white">
+                {user.name.charAt(0).toUpperCase()}
+              </div>
+            )}
+            <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              {uploading ? (
+                <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+              ) : (
+                <Camera className="w-4 h-4 text-white" />
+              )}
+            </div>
+          </button>
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-[0.875rem] truncate text-white">{user.name}</p>
             <p className="text-[0.75rem] text-white/40">{ROLE_LABELS[user.role as UserRole]}</p>
