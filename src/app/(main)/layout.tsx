@@ -115,9 +115,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 className="w-10 h-10 rounded-full object-cover"
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-sm font-bold text-white">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5]" />
             )}
             <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               {uploading ? (
