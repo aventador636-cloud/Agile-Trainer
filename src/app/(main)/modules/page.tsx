@@ -105,9 +105,9 @@ export default function ModulesPage() {
                       <span className="text-[0.75rem] font-bold text-emerald-300 ml-1">{result.pct}%</span>
                     </div>
                   ) : (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06]">
-                      <Circle className="w-3.5 h-3.5 text-white/25" />
-                      <span className="text-[0.75rem] font-medium text-white/30">Необходимо пройти</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/25 animate-pulse">
+                      <Circle className="w-3.5 h-3.5 text-amber-400" />
+                      <span className="text-[0.75rem] font-semibold text-amber-400">Необходимо пройти</span>
                     </div>
                   )}
                 </div>
