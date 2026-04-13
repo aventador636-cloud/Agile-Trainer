@@ -79,11 +79,9 @@ export default function LoginPage() {
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-10 py-5">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-5 h-5 gpb-logo-spin" fill="none" stroke="white" strokeWidth="1.8">
-              <circle cx="20" cy="20" r="14" />
-              <ellipse cx="20" cy="20" rx="6" ry="14" />
-              <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
-              <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
+            <svg viewBox="0 0 40 40" className="w-5 h-5 gpb-logo-spin" fill="none" stroke="white" strokeWidth="2">
+              <circle cx="20" cy="22" r="12" />
+              <path d="M12 14 Q16 6, 20 10 Q24 14, 28 8" strokeLinecap="round" />
             </svg>
           </div>
           <span className="text-white font-bold text-[1rem] tracking-tight">Agile Trainer</span>
@@ -101,11 +99,9 @@ export default function LoginPage() {
         {/* Left: Hero text */}
         <div className="flex-1 max-w-xl text-center lg:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[0.75rem] font-medium mb-6">
-            <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="#5B7BF5" strokeWidth="1.8">
-              <circle cx="20" cy="20" r="16" />
-              <ellipse cx="20" cy="20" rx="7" ry="16" />
-              <path d="M5 15 Q13 18, 20 17 Q27 16, 35 15" />
-              <path d="M5 25 Q13 22, 20 23 Q27 24, 35 25" />
+            <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="#5B7BF5" strokeWidth="2">
+              <circle cx="20" cy="22" r="12" />
+              <path d="M12 14 Q16 6, 20 10 Q24 14, 28 8" strokeLinecap="round" />
             </svg>
             ГПБ Agile PlayBook v2.4
           </div>
