@@ -79,7 +79,7 @@ export default function LoginPage() {
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-10 py-5">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-5 h-5 gpb-logo-spin" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round">
+            <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round">
               <circle cx="20" cy="22" r="11" />
               <path d="M9 22 C9 14, 15 9, 22 9" />
               <path d="M22 9 C26 9, 30 12, 30 16" />
