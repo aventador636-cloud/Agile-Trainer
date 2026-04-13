@@ -54,7 +54,9 @@ export default function TestPage() {
   const [saving, setSaving] = useState(false)
 
   const currentQuestion = questions[currentIndex]
-  const options = (currentQuestion?.options as unknown as QuestionOption[]) ?? []
+  const rawOptions = (currentQuestion?.options as unknown as QuestionOption[]) ?? []
+  const [shuffledOptions, setShuffledOptions] = useState<QuestionOption[]>([])
+  const options = shuffledOptions.length > 0 ? shuffledOptions : rawOptions
   const progressPct = questions.length > 0 ? Math.round(((currentIndex + 1) / questions.length) * 100) : 0
 
   const [loaded, setLoaded] = useState(false)
@@ -113,8 +115,8 @@ export default function TestPage() {
 
   const handleNext = useCallback(async () => {
     const lastAnswer = answers[answers.length - 1]
-    if (phase === 'feedback' && lastAnswer && !lastAnswer.isCorrect) { setSelectedOptionId(null); setPhase('second_try'); return }
-    if (currentIndex < questions.length - 1) { setCurrentIndex((prev) => prev + 1); setSelectedOptionId(null); setPhase('question') }
+    if (phase === 'feedback' && lastAnswer && !lastAnswer.isCorrect) { setSelectedOptionId(null); setShuffledOptions(shuffleArray([...rawOptions])); setPhase('second_try'); return }
+    if (currentIndex < questions.length - 1) { setCurrentIndex((prev) => prev + 1); setSelectedOptionId(null); setShuffledOptions([]); setPhase('question') }
     else await finishTest()
   }, [phase, answers, currentIndex, questions.length])
 
