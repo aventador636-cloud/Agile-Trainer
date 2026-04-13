@@ -5,10 +5,20 @@ import Link from 'next/link'
 import { useUserStore } from '@/store/user-store'
 import { supabase } from '@/lib/supabase'
 import type { Tables } from '@/lib/database.types'
-import { BookOpen, Play } from 'lucide-react'
+import { BookOpen, Play, Compass, Network, Users, Workflow, CalendarDays, Rocket, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-const MODULE_ICONS = ['🎯', '🏗️', '👥', '⚙️', '📅', '📊']
+// Modern icons mapped by module order_index
+const MODULE_ICON_MAP: Record<number, { icon: LucideIcon; gradient: string }> = {
+  1: { icon: Compass,      gradient: 'from-[#2D46B9] to-[#5B7BF5]' },   // Основы Agile — фундамент, направление
+  2: { icon: Network,      gradient: 'from-[#6366F1] to-[#8B5CF6]' },   // Структура организации — связи, стримы
+  3: { icon: Users,         gradient: 'from-[#0EA5E9] to-[#38BDF8]' },   // Ролевая модель — люди, роли
+  4: { icon: Workflow,     gradient: 'from-[#10B981] to-[#34D399]' },   // Процесс разработки — спринты, потоки
+  5: { icon: CalendarDays, gradient: 'from-[#F59E0B] to-[#FBBF24]' },   // События — церемонии, расписание
+  6: { icon: Rocket,       gradient: 'from-[#EF4444] to-[#F87171]' },   // Продуктовый подход — запуск, рост
+}
+
+const DEFAULT_ICON = { icon: BookOpen, gradient: 'from-[#2D46B9] to-[#5B7BF5]' }
 
 export default function ModulesPage() {
   const user = useUserStore((s) => s.user)
@@ -51,50 +61,51 @@ export default function ModulesPage() {
 
       {/* Module grid */}
       <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {userModules.map((mod, i) => (
-          <div key={mod.id} className="rounded-xl bg-white/[0.03] border border-white/[0.06] overflow-hidden group hover:border-[#2D46B9]/30 transition-all hover:bg-white/[0.05]">
-            <div className="p-4 sm:p-5 pb-3 sm:pb-4">
-              <div className="flex items-start justify-between mb-3 sm:mb-4">
-                <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-white text-[0.875rem] sm:text-[1rem] font-bold">
-                    {mod.order_index}
+        {userModules.map((mod) => {
+          const { icon: Icon, gradient } = MODULE_ICON_MAP[mod.order_index] ?? DEFAULT_ICON
+          return (
+            <div key={mod.id} className="rounded-xl bg-white/[0.03] border border-white/[0.06] overflow-hidden group hover:border-[#2D46B9]/30 transition-all hover:bg-white/[0.05]">
+              <div className="p-4 sm:p-5 pb-3 sm:pb-4">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  {/* Modern gradient icon */}
+                  <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}>
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={1.8} />
                   </div>
-                  <span className="text-[1.5rem] sm:text-[1.75rem]">{MODULE_ICONS[i] ?? '📘'}</span>
+                  <span className="text-[0.8125rem] sm:text-[0.875rem] font-bold text-white bg-[#2D46B9]/25 px-4 sm:px-4.5 py-2 rounded-full">
+                    Модуль {mod.order_index}
+                  </span>
                 </div>
-                <span className="text-[0.625rem] sm:text-[0.6875rem] font-bold text-[#5B7BF5] bg-[#2D46B9]/15 px-2 sm:px-2.5 py-1 rounded-full">
-                  Модуль {mod.order_index}
-                </span>
+
+                <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-white/90 group-hover:text-white transition-colors leading-tight">
+                  {mod.title}
+                </h3>
+                <p className="text-[0.75rem] sm:text-[0.8125rem] text-white/30 mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
               </div>
 
-              <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-white/90 group-hover:text-white transition-colors leading-tight">
-                {mod.title}
-              </h3>
-              <p className="text-[0.75rem] sm:text-[0.8125rem] text-white/30 mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
+              <div className="px-4 sm:px-5 pb-4 sm:pb-5 flex gap-2">
+                <Link href={`/modules/${mod.id}/test`} className="flex-1">
+                  <Button
+                    size="sm"
+                    className="w-full bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    Тест
+                  </Button>
+                </Link>
+                <Link href={`/modules/${mod.id}/simulation`} className="flex-1">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="w-full border-white/[0.1] text-white/60 hover:bg-white/[0.06] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                  >
+                    <Play className="w-3.5 h-3.5" />
+                    Симуляция
+                  </Button>
+                </Link>
+              </div>
             </div>
-
-            <div className="px-4 sm:px-5 pb-4 sm:pb-5 flex gap-2">
-              <Link href={`/modules/${mod.id}/test`} className="flex-1">
-                <Button
-                  size="sm"
-                  className="w-full bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
-                >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  Тест
-                </Button>
-              </Link>
-              <Link href={`/modules/${mod.id}/simulation`} className="flex-1">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="w-full border-white/[0.1] text-white/60 hover:bg-white/[0.06] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
-                >
-                  <Play className="w-3.5 h-3.5" />
-                  Симуляция
-                </Button>
-              </Link>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
