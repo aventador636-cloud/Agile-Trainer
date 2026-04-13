@@ -43,7 +43,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <>
       {/* Brand header */}
       <div className="px-6 pt-6 pb-5">
-        <div className="flex items-center gap-3">
+        <Link href="/dashboard" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
             <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="1.8">
               <circle cx="20" cy="20" r="14" />
@@ -53,10 +53,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </svg>
           </div>
           <div>
-            <span className="text-[1.0625rem] font-bold tracking-tight block leading-tight text-white">Agile Trainer</span>
+            <span className="text-[1.0625rem] font-bold tracking-tight block leading-tight text-white group-hover:text-white/80 transition-colors">Agile Trainer</span>
             <span className="text-[0.6875rem] text-white/30 font-medium">PlayBook v2.4</span>
           </div>
-        </div>
+        </Link>
       </div>
 
       {/* User card */}
@@ -133,7 +133,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       {/* Mobile header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-[#0D1224]/90 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2.5">
+          <Link href="/dashboard" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
               <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="white" strokeWidth="1.8">
                 <circle cx="20" cy="20" r="14" />
@@ -143,7 +143,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               </svg>
             </div>
             <span className="text-white font-bold text-[0.9375rem]">Agile Trainer</span>
-          </div>
+          </Link>
           <div className="flex items-center gap-3">
             <span className="text-[#5B7BF5] text-[0.75rem] font-semibold">{user.xp} XP</span>
             <button

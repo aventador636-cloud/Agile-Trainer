@@ -41,19 +41,9 @@ export default function ModulesPage() {
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* Page header */}
-      <div className="flex items-center gap-3 sm:gap-4">
-        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#2D46B9]/20 flex items-center justify-center shrink-0">
-          <svg viewBox="0 0 40 40" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="#5B7BF5" strokeWidth="1.8">
-            <circle cx="20" cy="20" r="14" />
-            <ellipse cx="20" cy="20" rx="6" ry="14" />
-            <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
-            <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
-          </svg>
-        </div>
-        <div>
-          <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white tracking-tight">Модули обучения</h1>
-          <p className="text-[0.75rem] sm:text-[0.875rem] text-white/30 mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
-        </div>
+      <div>
+        <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white tracking-tight">Модули обучения</h1>
+        <p className="text-[0.75rem] sm:text-[0.875rem] text-white/30 mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
       </div>
 
       {/* Gradient divider */}
