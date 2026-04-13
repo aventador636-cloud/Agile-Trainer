@@ -256,31 +256,31 @@ export default function TestPage() {
     const pct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0
     const { bonus } = calculateEndBonuses(correctCount, questions.length)
     return (
-      <div className="space-y-6 max-w-2xl mx-auto">
+      <div className="space-y-4 sm:space-y-6 max-w-2xl mx-auto">
         {/* Result banner — PlayBook gradient */}
-        <div className="gpb-gradient rounded-2xl p-8 text-white text-center relative overflow-hidden">
+        <div className="gpb-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-white text-center relative overflow-hidden">
           {/* Chevrons */}
           <div className="absolute top-3 right-4 flex flex-col gap-1 opacity-30">
             <div className="w-0 h-0 border-l-[14px] border-r-[14px] border-b-[18px] border-l-transparent border-r-transparent border-b-white" />
             <div className="w-0 h-0 border-l-[14px] border-r-[14px] border-b-[18px] border-l-transparent border-r-transparent border-b-white ml-3" />
           </div>
 
-          <Trophy className="w-14 h-14 mx-auto text-white/80" />
-          <h1 className="text-[1.75rem] font-extrabold mt-3 tracking-tight">Тест завершён!</h1>
-          <p className="text-white/60 mt-1 text-[0.875rem]">{moduleName}</p>
+          <Trophy className="w-10 h-10 sm:w-14 sm:h-14 mx-auto text-white/80" />
+          <h1 className="text-[1.25rem] sm:text-[1.75rem] font-extrabold mt-3 tracking-tight">Тест завершён!</h1>
+          <p className="text-white/60 mt-1 text-[0.8125rem] sm:text-[0.875rem]">{moduleName}</p>
 
-          <div className="grid grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
             <div>
-              <p className="text-[2rem] font-extrabold">{pct}%</p>
-              <p className="text-[0.75rem] text-white/50">Результат</p>
+              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{pct}%</p>
+              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">Результат</p>
             </div>
             <div className="border-x border-white/15">
-              <p className="text-[2rem] font-extrabold">{correctCount}/{questions.length}</p>
-              <p className="text-[0.75rem] text-white/50">Правильных</p>
+              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{correctCount}/{questions.length}</p>
+              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">Правильных</p>
             </div>
             <div>
-              <p className="text-[2rem] font-extrabold">+{totalXp}</p>
-              <p className="text-[0.75rem] text-white/50">XP</p>
+              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">+{totalXp}</p>
+              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">XP</p>
             </div>
           </div>
         </div>
@@ -357,14 +357,14 @@ export default function TestPage() {
   const lastAnswer = answers[answers.length - 1]
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <div className="max-w-2xl mx-auto space-y-4 sm:space-y-6">
       {/* Test header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <div>
           <Link href="/modules" className="text-[0.8125rem] text-[#9CA3AF] hover:text-[#2D46B9] flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> К модулям
           </Link>
-          <h1 className="text-[1.25rem] font-extrabold text-[#1A2340] mt-1 tracking-tight">{moduleName}</h1>
+          <h1 className="text-[1rem] sm:text-[1.25rem] font-extrabold text-[#1A2340] mt-1 tracking-tight">{moduleName}</h1>
         </div>
         <div className="flex items-center gap-2.5">
           {streak > 0 && (
@@ -412,7 +412,7 @@ export default function TestPage() {
       </div>
 
       {/* Options — PlayBook list style */}
-      <div className="space-y-2.5">
+      <div className="space-y-2 sm:space-y-2.5">
         {options.map((opt, idx) => {
           const letterLabels = ['A', 'B', 'C', 'D', 'E', 'F']
           const letter = letterLabels[idx] ?? opt.id.toUpperCase()
@@ -446,7 +446,7 @@ export default function TestPage() {
               key={opt.id}
               disabled={isFeedback || saving}
               onClick={() => isQuestion && setSelectedOptionId(opt.id)}
-              className={`w-full text-left p-4 rounded-xl border-[1.5px] transition-all flex items-center gap-3.5 ${containerStyle}`}
+              className={`w-full text-left p-3 sm:p-4 rounded-xl border-[1.5px] transition-all flex items-center gap-3 sm:gap-3.5 ${containerStyle}`}
             >
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-[0.8125rem] font-bold shrink-0 transition-colors ${badgeStyle}`}>
                 {isFeedback && opt.id === currentQuestion?.correct_option_id ? (
@@ -457,7 +457,7 @@ export default function TestPage() {
                   letter
                 )}
               </div>
-              <span className="text-[0.9375rem] text-[#1A2340] leading-snug">{opt.text}</span>
+              <span className="text-[0.8125rem] sm:text-[0.9375rem] text-[#1A2340] leading-snug">{opt.text}</span>
             </button>
           )
         })}
