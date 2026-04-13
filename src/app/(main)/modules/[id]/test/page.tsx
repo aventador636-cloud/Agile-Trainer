@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useUserStore } from '@/store/user-store'
 import { supabase } from '@/lib/supabase'
-import { XP_RULES, ACHIEVEMENTS, type AchievementType } from '@/lib/constants'
+import { POINTS_RULES, ACHIEVEMENTS, type AchievementType } from '@/lib/constants'
 import type { Tables } from '@/lib/database.types'
 import {
   shuffleArray,
@@ -278,31 +278,31 @@ export default function TestPage() {
               </div>
               <div>
                 <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">+{totalXp}</p>
-                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">XP</p>
+                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">баллов</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* XP Breakdown */}
+        {/* Points Breakdown */}
         <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-6">
-          <h3 className="font-bold text-white text-[1rem] mb-4">Начисление XP</h3>
+          <h3 className="font-bold text-white text-[1rem] mb-4">Начисление баллов</h3>
           <div className="space-y-3 text-[0.875rem]">
             <div className="flex justify-between items-center">
               <span className="text-white/40">Правильные ответы</span>
-              <span className="font-bold text-white">+{totalXp - bonus} XP</span>
+              <span className="font-bold text-white">+{totalXp - bonus} б.</span>
             </div>
             <div className="h-px bg-white/[0.06]" />
             <div className="flex justify-between items-center">
               <span className="text-white/40">Бонус за завершение модуля</span>
-              <span className="font-bold text-white">+{XP_RULES.MODULE_COMPLETE} XP</span>
+              <span className="font-bold text-white">+{POINTS_RULES.MODULE_COMPLETE} б.</span>
             </div>
             {correctCount === questions.length && (
               <>
                 <div className="h-px bg-white/[0.06]" />
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-[#5B7BF5]">Бонус за 100% результат</span>
-                  <span className="font-bold text-[#5B7BF5]">+{XP_RULES.PERFECT_MODULE} XP</span>
+                  <span className="font-bold text-[#5B7BF5]">+{POINTS_RULES.PERFECT_MODULE} б.</span>
                 </div>
               </>
             )}
@@ -372,7 +372,7 @@ export default function TestPage() {
             </span>
           )}
           <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#2D46B9]/20 text-[#5B7BF5] text-[0.75rem] font-bold">
-            +{totalXp} XP
+            +{totalXp} б.
           </span>
         </div>
       </div>
@@ -475,7 +475,7 @@ export default function TestPage() {
               <p className="font-bold text-[0.9375rem] text-white">
                 {lastAnswer.isCorrect ? 'Правильно!' : 'Неправильно'}
                 {lastAnswer.xpEarned > 0 && (
-                  <span className="ml-2 text-[#5B7BF5] font-bold">+{lastAnswer.xpEarned} XP</span>
+                  <span className="ml-2 text-[#5B7BF5] font-bold">+{lastAnswer.xpEarned} б.</span>
                 )}
               </p>
               {currentQuestion?.explanation && (

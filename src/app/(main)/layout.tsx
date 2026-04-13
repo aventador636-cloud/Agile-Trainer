@@ -76,7 +76,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </div>
         <div className="mt-2.5">
           <div className="flex justify-between text-[0.6875rem] text-white/30 mb-1.5">
-            <span>{user.xp} XP</span>
+            <span>{user.xp} б.</span>
             <span>{level.maxXp === Infinity ? 'MAX' : level.maxXp}</span>
           </div>
           <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
@@ -145,7 +145,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             <span className="text-white font-bold text-[0.9375rem]">Agile Trainer</span>
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-[#5B7BF5] text-[0.75rem] font-semibold">{user.xp} XP</span>
+            <span className="text-[#5B7BF5] text-[0.75rem] font-semibold">{user.xp} б.</span>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center text-white/60"

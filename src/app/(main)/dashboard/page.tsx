@@ -63,7 +63,7 @@ export default function DashboardPage() {
             <div className="flex items-center gap-6 sm:gap-8">
               <div>
                 <p className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white">{user.xp}</p>
-                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">XP</p>
+                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">баллов</p>
               </div>
               <div>
                 <p className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white">{user.current_streak}</p>
@@ -193,7 +193,7 @@ export default function DashboardPage() {
                           <span className="text-[0.6875rem] sm:text-[0.75rem] px-2 sm:px-2.5 py-1 rounded-full bg-[#2D46B9]/15 text-[#5B7BF5] font-bold">
                             {pct}%
                           </span>
-                          <span className="text-[0.75rem] sm:text-[0.8125rem] font-bold text-[#5B7BF5]">+{a.xp_earned} XP</span>
+                          <span className="text-[0.75rem] sm:text-[0.8125rem] font-bold text-[#5B7BF5]">+{a.xp_earned} б.</span>
                         </div>
                       </div>
                     )

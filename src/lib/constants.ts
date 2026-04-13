@@ -10,7 +10,7 @@ export const ROLE_BY_LABEL: Record<string, UserRole> = Object.fromEntries(
   Object.entries(ROLE_LABELS).map(([k, v]) => [v, k as UserRole])
 ) as Record<string, UserRole>
 
-export const XP_RULES = {
+export const POINTS_RULES = {
   CORRECT_FIRST_TRY: 10,
   CORRECT_SECOND_TRY: 5,
   MODULE_COMPLETE: 50,
@@ -19,12 +19,15 @@ export const XP_RULES = {
   PERFECT_MODULE: 30,
 } as const
 
+/** @deprecated Use POINTS_RULES instead */
+export const XP_RULES = POINTS_RULES
+
 export const LEVELS = [
-  { level: 1, name: 'Agile Новичок', minXp: 0, maxXp: 200, icon: '🌱' },
-  { level: 2, name: 'Участник Команды', minXp: 201, maxXp: 500, icon: '⚡' },
-  { level: 3, name: 'Scrum-практик', minXp: 501, maxXp: 1000, icon: '🔲' },
-  { level: 4, name: 'Владелец Продукта', minXp: 1001, maxXp: 2000, icon: '🚀' },
-  { level: 5, name: 'Agile-коуч', minXp: 2001, maxXp: Infinity, icon: '🏆' },
+  { level: 1, name: 'Стажёр', minXp: 0, maxXp: 200, icon: '🌱' },
+  { level: 2, name: 'Специалист', minXp: 201, maxXp: 500, icon: '⚡' },
+  { level: 3, name: 'Практик', minXp: 501, maxXp: 1000, icon: '📘' },
+  { level: 4, name: 'Профессионал', minXp: 1001, maxXp: 2000, icon: '🚀' },
+  { level: 5, name: 'Эксперт', minXp: 2001, maxXp: Infinity, icon: '🏆' },
 ] as const
 
 export type AchievementType =

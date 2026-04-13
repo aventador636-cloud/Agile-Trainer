@@ -126,7 +126,7 @@ export default function LoginPage() {
           <div className="flex flex-wrap gap-3 mt-8 justify-center lg:justify-start">
             {[
               { icon: Shield, label: 'Тесты по PlayBook' },
-              { icon: Zap, label: 'Геймификация XP' },
+              { icon: Zap, label: 'Балльная система' },
               { icon: Users, label: 'Ролевые сценарии' },
             ].map((f) => (
               <div key={f.label} className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 border border-white/8 text-white/50 text-[0.8125rem]">
