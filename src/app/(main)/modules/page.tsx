@@ -33,8 +33,11 @@ export default function ModulesPage() {
       {/* Page header */}
       <div className="flex items-center gap-3 sm:gap-4">
         <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#2D46B9]/20 flex items-center justify-center shrink-0">
-          <svg viewBox="0 0 40 40" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="#2D46B9" strokeWidth="2">
-            <path d="M20 5 C30 5, 35 15, 35 20 C35 30, 25 35, 20 35 C10 35, 5 25, 5 20 C5 12, 12 8, 18 8 C24 8, 28 14, 28 20 C28 26, 22 30, 18 28" />
+          <svg viewBox="0 0 40 40" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="#2D46B9" strokeWidth="1.8">
+            <circle cx="20" cy="20" r="14" />
+            <ellipse cx="20" cy="20" rx="6" ry="14" />
+            <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
+            <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
           </svg>
         </div>
         <div>

@@ -59,11 +59,11 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0A0F1E]">
-      {/* Animated gradient mesh background */}
+      {/* Animated gradient mesh background — smooth slow drift */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#2D46B9]/30 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3 animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#5B7BF5]/20 rounded-full blur-[100px] translate-x-1/4 translate-y-1/4" />
-        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-[#6366F1]/15 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-[#2D46B9]/25 rounded-full blur-[150px] -translate-x-1/3 -translate-y-1/3 animate-[gpb-drift-1_20s_ease-in-out_infinite]" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#5B7BF5]/15 rounded-full blur-[130px] translate-x-1/4 translate-y-1/4 animate-[gpb-drift-2_25s_ease-in-out_infinite]" />
+        <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#6366F1]/10 rounded-full blur-[110px] -translate-x-1/2 -translate-y-1/2 animate-[gpb-drift-3_22s_ease-in-out_infinite]" />
       </div>
 
       {/* Subtle grid pattern overlay */}
@@ -79,8 +79,11 @@ export default function LoginPage() {
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-10 py-5">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="2.5">
-              <path d="M20 5 C30 5, 35 15, 35 20 C35 30, 25 35, 20 35 C10 35, 5 25, 5 20 C5 12, 12 8, 18 8 C24 8, 28 14, 28 20 C28 26, 22 30, 18 28" />
+            <svg viewBox="0 0 40 40" className="w-5 h-5 gpb-logo-spin" fill="none" stroke="white" strokeWidth="1.8">
+              <circle cx="20" cy="20" r="14" />
+              <ellipse cx="20" cy="20" rx="6" ry="14" />
+              <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
+              <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
             </svg>
           </div>
           <span className="text-white font-bold text-[1rem] tracking-tight">Agile Trainer</span>
@@ -98,7 +101,12 @@ export default function LoginPage() {
         {/* Left: Hero text */}
         <div className="flex-1 max-w-xl text-center lg:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[0.75rem] font-medium mb-6">
-            <Zap className="w-3.5 h-3.5 text-[#5B7BF5]" />
+            <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="#5B7BF5" strokeWidth="1.8">
+              <circle cx="20" cy="20" r="16" />
+              <ellipse cx="20" cy="20" rx="7" ry="16" />
+              <path d="M5 15 Q13 18, 20 17 Q27 16, 35 15" />
+              <path d="M5 25 Q13 22, 20 23 Q27 24, 35 25" />
+            </svg>
             ГПБ Agile PlayBook v2.4
           </div>
 

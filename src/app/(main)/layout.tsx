@@ -46,8 +46,11 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <div className="px-6 pt-6 pb-5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full border-2 border-white/50 flex items-center justify-center gpb-logo-spin">
-            <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="2.5">
-              <path d="M20 5 C30 5, 35 15, 35 20 C35 30, 25 35, 20 35 C10 35, 5 25, 5 20 C5 12, 12 8, 18 8 C24 8, 28 14, 28 20 C28 26, 22 30, 18 28" />
+            <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="1.8">
+              <circle cx="20" cy="20" r="14" />
+              <ellipse cx="20" cy="20" rx="6" ry="14" />
+              <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
+              <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
             </svg>
           </div>
           <div>
@@ -138,8 +141,11 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-full border-[1.5px] border-white/50 flex items-center justify-center gpb-logo-spin">
-              <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="white" strokeWidth="2.5">
-                <path d="M20 5 C30 5, 35 15, 35 20 C35 30, 25 35, 20 35 C10 35, 5 25, 5 20 C5 12, 12 8, 18 8 C24 8, 28 14, 28 20 C28 26, 22 30, 18 28" />
+              <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="white" strokeWidth="1.8">
+                <circle cx="20" cy="20" r="14" />
+                <ellipse cx="20" cy="20" rx="6" ry="14" />
+                <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
+                <path d="M7 25 Q13 22.5, 20 23 Q27 23.5, 33 25" />
               </svg>
             </div>
             <span className="text-white font-bold text-[0.9375rem]">Agile Trainer</span>
