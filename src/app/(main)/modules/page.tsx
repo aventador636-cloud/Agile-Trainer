@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useUserStore } from '@/store/user-store'
 import { supabase } from '@/lib/supabase'
 import type { Tables } from '@/lib/database.types'
-import { BookOpen, Play, Compass, Network, Users, Workflow, CalendarDays, Rocket, CheckCircle, Circle, type LucideIcon } from 'lucide-react'
+import { BookOpen, Compass, Network, Users, Workflow, CalendarDays, Rocket, CheckCircle, Circle, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const MODULE_ICON_MAP: Record<number, { icon: LucideIcon; gradient: string }> = {
@@ -112,24 +112,14 @@ export default function ModulesPage() {
                 </div>
               </div>
 
-              <div className="px-4 sm:px-5 pb-4 sm:pb-5 flex gap-2">
-                <Link href={`/modules/${mod.id}/test`} className="flex-1">
+              <div className="px-4 sm:px-5 pb-4 sm:pb-5">
+                <Link href={`/modules/${mod.id}/test`}>
                   <Button
                     size="sm"
                     className="w-full bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
-                    {result ? 'Пересдать' : 'Тест'}
-                  </Button>
-                </Link>
-                <Link href={`/modules/${mod.id}/simulation`} className="flex-1">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="w-full border-[#2D46B9]/25 text-[#2D46B9] hover:bg-[#2D46B9] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
-                  >
-                    <Play className="w-3.5 h-3.5" />
-                    Симуляция
+                    {result ? 'Пересдать' : 'Пройти тест'}
                   </Button>
                 </Link>
               </div>
