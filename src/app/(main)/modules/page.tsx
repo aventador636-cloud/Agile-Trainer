@@ -50,7 +50,6 @@ export default function ModulesPage() {
 
   const userModules = modules.filter((m) => m.roles.includes(user.role))
 
-  // Best attempt per module (highest score %)
   function getBestAttempt(moduleId: string): { passed: boolean; pct: number } | null {
     const moduleAttempts = attempts.filter((a) => a.module_id === moduleId)
     if (moduleAttempts.length === 0) return null
@@ -67,12 +66,12 @@ export default function ModulesPage() {
     <div className="space-y-6 sm:space-y-8">
       {/* Page header */}
       <div>
-        <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white tracking-tight">Модули обучения</h1>
-        <p className="text-[0.75rem] sm:text-[0.875rem] text-white/30 mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
+        <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-[#2D46B9] tracking-tight">Модули обучения</h1>
+        <p className="text-[0.75rem] sm:text-[0.875rem] text-[#6B7280] mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
       </div>
 
       {/* Gradient divider */}
-      <div className="h-px bg-gradient-to-r from-[#2D46B9]/50 via-[#5B7BF5]/30 to-transparent" />
+      <div className="h-[2px] bg-gradient-to-r from-[#2D46B9] via-[#5B7BF5] to-transparent" />
 
       {/* Module grid */}
       <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -80,34 +79,34 @@ export default function ModulesPage() {
           const { icon: Icon, gradient } = MODULE_ICON_MAP[mod.order_index] ?? DEFAULT_ICON
           const result = getBestAttempt(mod.id)
           return (
-            <div key={mod.id} className="rounded-xl bg-white/[0.03] border border-white/[0.06] overflow-hidden group hover:border-[#2D46B9]/30 transition-all hover:bg-white/[0.05]">
+            <div key={mod.id} className="rounded-xl bg-white border border-[#E2E5F0] overflow-hidden group hover:shadow-lg hover:shadow-[#2D46B9]/8 transition-all">
               <div className="p-4 sm:p-5 pb-3 sm:pb-4">
                 <div className="flex items-start justify-between mb-3 sm:mb-4">
-                  <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}>
+                  <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-md`}>
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={1.8} />
                   </div>
-                  <span className="text-[0.8125rem] sm:text-[0.875rem] font-bold text-white bg-[#2D46B9]/25 px-4 sm:px-4.5 py-2 rounded-full">
+                  <span className="text-[0.8125rem] sm:text-[0.875rem] font-bold text-[#2D46B9] bg-[#EEF0F8] px-4 sm:px-4.5 py-2 rounded-full">
                     Модуль {mod.order_index}
                   </span>
                 </div>
 
-                <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-white/90 group-hover:text-white transition-colors leading-tight">
+                <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-[#1A2340] group-hover:text-[#2D46B9] transition-colors leading-tight">
                   {mod.title}
                 </h3>
-                <p className="text-[0.75rem] sm:text-[0.8125rem] text-white/30 mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
+                <p className="text-[0.75rem] sm:text-[0.8125rem] text-[#6B7280] mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
 
                 {/* Status badge */}
                 <div className="mt-3">
                   {result ? (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/20">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-[0.75rem] font-semibold text-emerald-400">Пройден</span>
-                      <span className="text-[0.75rem] font-bold text-emerald-300 ml-1">{result.pct}%</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200">
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="text-[0.75rem] font-semibold text-emerald-700">Пройден</span>
+                      <span className="text-[0.75rem] font-bold text-emerald-600 ml-1">{result.pct}%</span>
                     </div>
                   ) : (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/25 animate-pulse">
-                      <Circle className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="text-[0.75rem] font-semibold text-amber-400">Необходимо пройти</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 animate-pulse">
+                      <Circle className="w-3.5 h-3.5 text-amber-500" />
+                      <span className="text-[0.75rem] font-semibold text-amber-600">Необходимо пройти</span>
                     </div>
                   )}
                 </div>
@@ -117,7 +116,7 @@ export default function ModulesPage() {
                 <Link href={`/modules/${mod.id}/test`} className="flex-1">
                   <Button
                     size="sm"
-                    className="w-full bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                    className="w-full bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
                     {result ? 'Пересдать' : 'Тест'}
@@ -127,7 +126,7 @@ export default function ModulesPage() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="w-full border-white/[0.1] text-white/60 hover:bg-white/[0.06] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                    className="w-full border-[#2D46B9]/25 text-[#2D46B9] hover:bg-[#2D46B9] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
                   >
                     <Play className="w-3.5 h-3.5" />
                     Симуляция
