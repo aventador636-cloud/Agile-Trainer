@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useUserStore } from '@/store/user-store'
 import { supabase } from '@/lib/supabase'
-import { ROLE_LABELS, getLevelForXp, getXpProgress, type UserRole } from '@/lib/constants'
+import { ROLE_LABELS, LEVELS, getLevelForXp, getXpProgress, type UserRole } from '@/lib/constants'
 import { BookOpen, Shield, LogOut, Trophy, ChevronRight, Menu, X, Camera } from 'lucide-react'
 
 const NAV_ITEMS = [
@@ -134,7 +134,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </div>
         <div className="mt-3 flex items-center gap-2">
           <Trophy className="w-4 h-4 text-[#5B7BF5]" />
-          <span className="text-[0.8125rem] font-medium text-white/70">{level.icon} {level.name}</span>
+          <span className="text-[0.8125rem] font-medium text-white/70">{level.name}</span>
         </div>
         <div className="mt-2.5">
           <div className="flex justify-between text-[0.6875rem] text-white/30 mb-1.5">
@@ -147,6 +147,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               style={{ width: `${xpProgress}%` }}
             />
           </div>
+          {level.maxXp !== Infinity ? (
+            <p className="text-[0.6875rem] text-white/25 mt-1.5">
+              Ещё <span className="text-[#5B7BF5] font-semibold">{level.maxXp - user.xp}</span> б. до грейда «{LEVELS[LEVELS.indexOf(level) + 1]?.name ?? 'MAX'}»
+            </p>
+          ) : (
+            <p className="text-[0.6875rem] text-emerald-400/60 mt-1.5 font-medium">Максимальный грейд достигнут</p>
+          )}
         </div>
       </div>
 

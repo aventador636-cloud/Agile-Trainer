@@ -23,11 +23,11 @@ export const POINTS_RULES = {
 export const XP_RULES = POINTS_RULES
 
 export const LEVELS = [
-  { level: 1, name: 'Стажёр', minXp: 0, maxXp: 200, icon: '🌱' },
-  { level: 2, name: 'Специалист', minXp: 201, maxXp: 500, icon: '⚡' },
-  { level: 3, name: 'Практик', minXp: 501, maxXp: 1000, icon: '📘' },
-  { level: 4, name: 'Профессионал', minXp: 1001, maxXp: 2000, icon: '🚀' },
-  { level: 5, name: 'Эксперт', minXp: 2001, maxXp: Infinity, icon: '🏆' },
+  { level: 1, name: 'Стажёр', minXp: 0, maxXp: 200, icon: '' },
+  { level: 2, name: 'Специалист', minXp: 201, maxXp: 500, icon: '' },
+  { level: 3, name: 'Практик', minXp: 501, maxXp: 1000, icon: '' },
+  { level: 4, name: 'Профессионал', minXp: 1001, maxXp: 2000, icon: '' },
+  { level: 5, name: 'Эксперт', minXp: 2001, maxXp: Infinity, icon: '' },
 ] as const
 
 export type AchievementType =
