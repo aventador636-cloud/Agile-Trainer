@@ -311,18 +311,20 @@ export default function TestPage() {
         })}
       </div>
 
-      {/* Feedback */}
+      {/* Feedback toast — top-right */}
       {isFeedback && lastAnswer && (
-        <div className={`rounded-xl p-5 border ${lastAnswer.isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'}`}>
-          <div className="flex items-start gap-3">
+        <div className={`fixed top-4 right-4 z-50 max-w-sm w-full rounded-xl p-4 shadow-lg border animate-in slide-in-from-right ${
+          lastAnswer.isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'
+        }`} style={{ animation: 'slideIn 0.3s ease-out' }}>
+          <div className="flex items-start gap-2.5">
             {lastAnswer.isCorrect ? <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" /> : <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />}
-            <div>
-              <p className="font-bold text-[0.9375rem] text-[#1A2340]">
+            <div className="min-w-0">
+              <p className="font-bold text-[0.8125rem] text-[#1A2340]">
                 {lastAnswer.isCorrect ? 'Правильно!' : 'Неправильно'}
-                {lastAnswer.xpEarned > 0 && <span className="ml-2 text-[#2D46B9]">+{lastAnswer.xpEarned} б.</span>}
+                {lastAnswer.xpEarned > 0 && <span className="ml-1.5 text-[#2D46B9]">+{lastAnswer.xpEarned} б.</span>}
               </p>
-              {currentQuestion?.explanation && <p className="text-[0.875rem] text-[#6B7280] mt-1.5 leading-relaxed">{currentQuestion.explanation}</p>}
-              {currentQuestion?.playbook_ref && <p className="text-[0.75rem] text-[#2D46B9] mt-2 font-semibold">{currentQuestion.playbook_ref}</p>}
+              {currentQuestion?.explanation && <p className="text-[0.75rem] text-[#6B7280] mt-1 leading-relaxed line-clamp-3">{currentQuestion.explanation}</p>}
+              {currentQuestion?.playbook_ref && <p className="text-[0.6875rem] text-[#2D46B9] mt-1 font-semibold">{currentQuestion.playbook_ref}</p>}
             </div>
           </div>
         </div>
