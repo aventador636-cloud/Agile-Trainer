@@ -76,9 +76,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <div className="px-6 pt-6 pb-5">
         <Link href="/modules" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
-            <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="2">
-              <circle cx="20" cy="22" r="12" />
-              <path d="M12 14 Q16 6, 20 10 Q24 14, 28 8" strokeLinecap="round" />
+            <svg viewBox="0 0 40 40" className="w-5 h-5 gpb-logo-spin" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round">
+              <circle cx="20" cy="22" r="11" />
+              <path d="M9 22 C9 14, 15 9, 22 9" />
+              <path d="M22 9 C26 9, 30 12, 30 16" />
             </svg>
           </div>
           <div>
@@ -196,9 +197,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/modules" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
-              <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="white" strokeWidth="2">
-                <circle cx="20" cy="22" r="12" />
-                <path d="M12 14 Q16 6, 20 10 Q24 14, 28 8" strokeLinecap="round" />
+              <svg viewBox="0 0 40 40" className="w-4 h-4 gpb-logo-spin" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round">
+                <circle cx="20" cy="22" r="11" />
+                <path d="M9 22 C9 14, 15 9, 22 9" />
+                <path d="M22 9 C26 9, 30 12, 30 16" />
               </svg>
             </div>
             <span className="text-white font-bold text-[0.9375rem]">Agile Trainer</span>
