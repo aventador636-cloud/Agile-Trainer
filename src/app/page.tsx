@@ -37,7 +37,7 @@ export default function LoginPage() {
 
     if (existing) {
       setUser(existing)
-      router.push('/dashboard')
+      router.push('/modules')
       return
     }
 
@@ -54,7 +54,7 @@ export default function LoginPage() {
     }
 
     setUser(newUser)
-    router.push('/dashboard')
+    router.push('/modules')
   }
 
   return (

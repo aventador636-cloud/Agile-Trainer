@@ -5,10 +5,9 @@ import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useUserStore } from '@/store/user-store'
 import { ROLE_LABELS, getLevelForXp, getXpProgress, type UserRole } from '@/lib/constants'
-import { LayoutDashboard, BookOpen, Shield, LogOut, Trophy, ChevronRight, Menu, X } from 'lucide-react'
+import { BookOpen, Shield, LogOut, Trophy, ChevronRight, Menu, X } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Кабинет' },
   { href: '/modules', icon: BookOpen, label: 'Модули' },
   { href: '/admin', icon: Shield, label: 'Админка' },
 ]
@@ -43,7 +42,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <>
       {/* Brand header */}
       <div className="px-6 pt-6 pb-5">
-        <Link href="/dashboard" className="flex items-center gap-3 group">
+        <Link href="/modules" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
             <svg viewBox="0 0 40 40" className="w-5 h-5" fill="none" stroke="white" strokeWidth="1.8">
               <circle cx="20" cy="20" r="14" />
@@ -133,7 +132,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       {/* Mobile header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-[#0D1224]/90 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="flex items-center justify-between px-4 py-3">
-          <Link href="/dashboard" className="flex items-center gap-2.5">
+          <Link href="/modules" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center gpb-logo-spin">
               <svg viewBox="0 0 40 40" className="w-4 h-4" fill="none" stroke="white" strokeWidth="1.8">
                 <circle cx="20" cy="20" r="14" />
