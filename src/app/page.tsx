@@ -147,7 +147,7 @@ export default function LoginPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-white/60 font-medium text-[0.8125rem]">ФИО</Label>
+                <Label htmlFor="name" className="text-white/60 font-medium text-[0.8125rem]">ФИО сотрудника</Label>
                 <Input
                   id="name"
                   placeholder="Иванов Иван Иванович"

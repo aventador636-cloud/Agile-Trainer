@@ -228,8 +228,8 @@ export default function TestPage() {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
-          <div className="w-9 h-9 border-[3px] border-[#2D46B9] border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="mt-4 text-[0.875rem] text-[#9CA3AF]">Загрузка вопросов...</p>
+          <div className="w-9 h-9 border-[3px] border-[#5B7BF5] border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="mt-4 text-[0.875rem] text-white/30">Загрузка вопросов...</p>
         </div>
       </div>
     )
@@ -239,12 +239,12 @@ export default function TestPage() {
   if (phase === 'error') {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="gpb-card max-w-md w-full p-8 text-center">
-          <XCircle className="w-12 h-12 text-[#EF4444]/60 mx-auto" />
-          <h2 className="text-[1.125rem] font-bold text-[#1A2340] mt-4">Вопросы не найдены</h2>
-          <p className="text-[0.875rem] text-[#6B7280] mt-2">Для данного модуля и вашей роли пока нет вопросов.</p>
+        <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] max-w-md w-full p-8 text-center">
+          <XCircle className="w-12 h-12 text-red-400/50 mx-auto" />
+          <h2 className="text-[1.125rem] font-bold text-white mt-4">Вопросы не найдены</h2>
+          <p className="text-[0.875rem] text-white/40 mt-2">Для данного модуля и вашей роли пока нет вопросов.</p>
           <Link href="/modules">
-            <Button className="mt-5 bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg font-semibold">К модулям</Button>
+            <Button className="mt-5 bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] rounded-lg font-semibold">К модулям</Button>
           </Link>
         </div>
       </div>
@@ -257,53 +257,52 @@ export default function TestPage() {
     const { bonus } = calculateEndBonuses(correctCount, questions.length)
     return (
       <div className="space-y-4 sm:space-y-6 max-w-2xl mx-auto">
-        {/* Result banner — PlayBook gradient */}
-        <div className="gpb-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-white text-center relative overflow-hidden">
-          {/* Chevrons */}
-          <div className="absolute top-3 right-4 flex flex-col gap-1 opacity-30">
-            <div className="w-0 h-0 border-l-[14px] border-r-[14px] border-b-[18px] border-l-transparent border-r-transparent border-b-white" />
-            <div className="w-0 h-0 border-l-[14px] border-r-[14px] border-b-[18px] border-l-transparent border-r-transparent border-b-white ml-3" />
-          </div>
+        {/* Result banner */}
+        <div className="relative rounded-xl sm:rounded-2xl p-5 sm:p-8 text-white text-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2D46B9]/40 via-[#5B7BF5]/30 to-[#6366F1]/20 rounded-xl sm:rounded-2xl" />
+          <div className="absolute inset-0 border border-white/[0.08] rounded-xl sm:rounded-2xl" />
 
-          <Trophy className="w-10 h-10 sm:w-14 sm:h-14 mx-auto text-white/80" />
-          <h1 className="text-[1.25rem] sm:text-[1.75rem] font-extrabold mt-3 tracking-tight">Тест завершён!</h1>
-          <p className="text-white/60 mt-1 text-[0.8125rem] sm:text-[0.875rem]">{moduleName}</p>
+          <div className="relative z-10">
+            <Trophy className="w-10 h-10 sm:w-14 sm:h-14 mx-auto text-[#5B7BF5]" />
+            <h1 className="text-[1.25rem] sm:text-[1.75rem] font-extrabold mt-3 tracking-tight">Тест завершён!</h1>
+            <p className="text-white/40 mt-1 text-[0.8125rem] sm:text-[0.875rem]">{moduleName}</p>
 
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
-            <div>
-              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{pct}%</p>
-              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">Результат</p>
-            </div>
-            <div className="border-x border-white/15">
-              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{correctCount}/{questions.length}</p>
-              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">Правильных</p>
-            </div>
-            <div>
-              <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">+{totalXp}</p>
-              <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/50">XP</p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
+              <div>
+                <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{pct}%</p>
+                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">Результат</p>
+              </div>
+              <div className="border-x border-white/10">
+                <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">{correctCount}/{questions.length}</p>
+                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">Правильных</p>
+              </div>
+              <div>
+                <p className="text-[1.5rem] sm:text-[2rem] font-extrabold">+{totalXp}</p>
+                <p className="text-[0.6875rem] sm:text-[0.75rem] text-white/30">XP</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* XP Breakdown — PlayBook card */}
-        <div className="gpb-card p-6">
-          <h3 className="font-bold text-[#1A2340] text-[1rem] mb-4">Начисление XP</h3>
+        {/* XP Breakdown */}
+        <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-6">
+          <h3 className="font-bold text-white text-[1rem] mb-4">Начисление XP</h3>
           <div className="space-y-3 text-[0.875rem]">
             <div className="flex justify-between items-center">
-              <span className="text-[#6B7280]">Правильные ответы</span>
-              <span className="font-bold text-[#1A2340]">+{totalXp - bonus} XP</span>
+              <span className="text-white/40">Правильные ответы</span>
+              <span className="font-bold text-white">+{totalXp - bonus} XP</span>
             </div>
-            <div className="h-px bg-[#E5E8F0]" />
+            <div className="h-px bg-white/[0.06]" />
             <div className="flex justify-between items-center">
-              <span className="text-[#6B7280]">Бонус за завершение модуля</span>
-              <span className="font-bold text-[#1A2340]">+{XP_RULES.MODULE_COMPLETE} XP</span>
+              <span className="text-white/40">Бонус за завершение модуля</span>
+              <span className="font-bold text-white">+{XP_RULES.MODULE_COMPLETE} XP</span>
             </div>
             {correctCount === questions.length && (
               <>
-                <div className="h-px bg-[#E5E8F0]" />
-                <div className="flex justify-between items-center text-[#2D46B9]">
-                  <span className="font-semibold">Бонус за 100% результат</span>
-                  <span className="font-bold">+{XP_RULES.PERFECT_MODULE} XP</span>
+                <div className="h-px bg-white/[0.06]" />
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold text-[#5B7BF5]">Бонус за 100% результат</span>
+                  <span className="font-bold text-[#5B7BF5]">+{XP_RULES.PERFECT_MODULE} XP</span>
                 </div>
               </>
             )}
@@ -312,17 +311,17 @@ export default function TestPage() {
 
         {/* New achievements */}
         {newAchievements.length > 0 && (
-          <div className="gpb-card gpb-card-accent p-6">
-            <h3 className="font-bold text-[#2D46B9] text-[1rem] mb-3">Новые значки!</h3>
+          <div className="rounded-xl bg-white/[0.03] border border-[#2D46B9]/30 border-l-[3px] p-6">
+            <h3 className="font-bold text-[#5B7BF5] text-[1rem] mb-3">Новые значки!</h3>
             <div className="flex flex-wrap gap-3">
               {newAchievements.map((type) => {
                 const ach = ACHIEVEMENTS[type as AchievementType]
                 return ach ? (
-                  <div key={type} className="flex items-center gap-2.5 p-3 bg-[#F0F3FA] rounded-lg">
+                  <div key={type} className="flex items-center gap-2.5 p-3 bg-[#2D46B9]/10 border border-[#2D46B9]/20 rounded-lg">
                     <span className="text-[1.5rem]">{ach.icon}</span>
                     <div>
-                      <p className="text-[0.8125rem] font-bold text-[#2D46B9]">{ach.name}</p>
-                      <p className="text-[0.6875rem] text-[#9CA3AF]">{ach.description}</p>
+                      <p className="text-[0.8125rem] font-bold text-[#5B7BF5]">{ach.name}</p>
+                      <p className="text-[0.6875rem] text-white/25">{ach.description}</p>
                     </div>
                   </div>
                 ) : null
@@ -336,12 +335,12 @@ export default function TestPage() {
           <Button
             onClick={handleRetake}
             variant="outline"
-            className="flex-1 gap-2 border-[#2D46B9]/30 text-[#2D46B9] hover:bg-[#2D46B9] hover:text-white rounded-lg font-semibold h-11"
+            className="flex-1 gap-2 border-white/[0.1] text-white/60 hover:bg-white/[0.06] hover:text-white rounded-lg font-semibold h-11"
           >
             <RotateCcw className="w-4 h-4" /> Пересдать
           </Button>
           <Link href="/modules" className="flex-1">
-            <Button className="w-full gap-2 bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg font-semibold h-11">
+            <Button className="w-full gap-2 bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg font-semibold h-11">
               <BookOpen className="w-4 h-4" /> К модулям
             </Button>
           </Link>
@@ -361,30 +360,30 @@ export default function TestPage() {
       {/* Test header */}
       <div className="flex items-center justify-between gap-2">
         <div>
-          <Link href="/modules" className="text-[0.8125rem] text-[#9CA3AF] hover:text-[#2D46B9] flex items-center gap-1 transition-colors">
+          <Link href="/modules" className="text-[0.8125rem] text-white/30 hover:text-[#5B7BF5] flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> К модулям
           </Link>
-          <h1 className="text-[1rem] sm:text-[1.25rem] font-extrabold text-[#1A2340] mt-1 tracking-tight">{moduleName}</h1>
+          <h1 className="text-[1rem] sm:text-[1.25rem] font-extrabold text-white mt-1 tracking-tight">{moduleName}</h1>
         </div>
         <div className="flex items-center gap-2.5">
           {streak > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-600 text-[0.75rem] font-bold">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[0.75rem] font-bold">
               <Flame className="w-3.5 h-3.5" /> {streak}
             </span>
           )}
-          <span className="gpb-pill text-[0.75rem] px-3 py-1">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#2D46B9]/20 text-[#5B7BF5] text-[0.75rem] font-bold">
             +{totalXp} XP
           </span>
         </div>
       </div>
 
-      {/* Progress bar — PlayBook gradient style */}
+      {/* Progress bar */}
       <div>
         <div className="flex justify-between text-[0.8125rem] mb-1.5">
-          <span className="text-[#6B7280] font-medium">Вопрос {currentIndex + 1} из {questions.length}</span>
-          <span className="text-[#2D46B9] font-bold">{progressPct}%</span>
+          <span className="text-white/40 font-medium">Вопрос {currentIndex + 1} из {questions.length}</span>
+          <span className="text-[#5B7BF5] font-bold">{progressPct}%</span>
         </div>
-        <div className="w-full h-2 bg-[#F0F3FA] rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-white/[0.06] rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] rounded-full transition-all duration-500"
             style={{ width: `${progressPct}%` }}
@@ -394,35 +393,35 @@ export default function TestPage() {
 
       {/* Second try banner */}
       {phase === 'second_try' && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-[0.875rem] text-amber-800 font-semibold">
+        <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 text-[0.875rem] text-amber-400 font-semibold">
           Ответ неверный. У вас есть вторая попытка!
         </div>
       )}
 
-      {/* Question card — PlayBook clean white card */}
-      <div className="gpb-card p-6">
+      {/* Question card */}
+      <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-5 sm:p-6">
         <div className="flex items-start gap-3">
-          <div className="gpb-number shrink-0 mt-0.5">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-white text-[0.8125rem] font-bold shrink-0 mt-0.5">
             {currentIndex + 1}
           </div>
-          <p className="text-[1.0625rem] font-semibold text-[#1A2340] leading-relaxed">
+          <p className="text-[0.9375rem] sm:text-[1.0625rem] font-semibold text-white/90 leading-relaxed">
             {currentQuestion?.text}
           </p>
         </div>
       </div>
 
-      {/* Options — PlayBook list style */}
+      {/* Options */}
       <div className="space-y-2 sm:space-y-2.5">
         {options.map((opt, idx) => {
           const letterLabels = ['A', 'B', 'C', 'D', 'E', 'F']
           const letter = letterLabels[idx] ?? opt.id.toUpperCase()
 
-          let containerStyle = 'border-[#E5E8F0] hover:border-[#2D46B9]/40 hover:bg-[#F9FAFB] cursor-pointer'
-          let badgeStyle = 'bg-[#F0F3FA] text-[#6B7280]'
+          let containerStyle = 'border-white/[0.06] hover:border-[#2D46B9]/40 hover:bg-white/[0.04] cursor-pointer'
+          let badgeStyle = 'bg-white/[0.06] text-white/40'
 
           if (isQuestion && selectedOptionId === opt.id) {
-            containerStyle = 'border-[#2D46B9] bg-[#F0F3FA] ring-1 ring-[#2D46B9]/20'
-            badgeStyle = 'bg-[#2D46B9] text-white'
+            containerStyle = 'border-[#2D46B9] bg-[#2D46B9]/10 ring-1 ring-[#2D46B9]/30'
+            badgeStyle = 'bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] text-white'
           }
 
           if (isFeedback) {
@@ -430,14 +429,14 @@ export default function TestPage() {
             const isSelected = opt.id === lastAnswer?.selectedOptionId
 
             if (isCorrectOption) {
-              containerStyle = 'border-emerald-500 bg-emerald-50'
+              containerStyle = 'border-emerald-500/50 bg-emerald-500/10'
               badgeStyle = 'bg-emerald-500 text-white'
             } else if (isSelected && !lastAnswer?.isCorrect) {
-              containerStyle = 'border-red-400 bg-red-50'
+              containerStyle = 'border-red-400/50 bg-red-500/10'
               badgeStyle = 'bg-red-400 text-white'
             } else {
-              containerStyle = 'border-[#E5E8F0] opacity-40'
-              badgeStyle = 'bg-[#F0F3FA] text-[#9CA3AF]'
+              containerStyle = 'border-white/[0.04] opacity-30'
+              badgeStyle = 'bg-white/[0.06] text-white/20'
             }
           }
 
@@ -457,33 +456,33 @@ export default function TestPage() {
                   letter
                 )}
               </div>
-              <span className="text-[0.8125rem] sm:text-[0.9375rem] text-[#1A2340] leading-snug">{opt.text}</span>
+              <span className="text-[0.8125rem] sm:text-[0.9375rem] text-white/80 leading-snug">{opt.text}</span>
             </button>
           )
         })}
       </div>
 
-      {/* Feedback explanation — PlayBook accent card */}
+      {/* Feedback explanation */}
       {isFeedback && lastAnswer && (
-        <div className={`rounded-xl p-5 ${lastAnswer.isCorrect ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'}`}>
+        <div className={`rounded-xl p-5 border ${lastAnswer.isCorrect ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-red-500/5 border-red-500/20'}`}>
           <div className="flex items-start gap-3">
             {lastAnswer.isCorrect ? (
-              <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
             ) : (
-              <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+              <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
             )}
             <div>
-              <p className="font-bold text-[0.9375rem]">
+              <p className="font-bold text-[0.9375rem] text-white">
                 {lastAnswer.isCorrect ? 'Правильно!' : 'Неправильно'}
                 {lastAnswer.xpEarned > 0 && (
-                  <span className="ml-2 text-[#2D46B9] font-bold">+{lastAnswer.xpEarned} XP</span>
+                  <span className="ml-2 text-[#5B7BF5] font-bold">+{lastAnswer.xpEarned} XP</span>
                 )}
               </p>
               {currentQuestion?.explanation && (
-                <p className="text-[0.875rem] text-[#4B5563] mt-1.5 leading-relaxed">{currentQuestion.explanation}</p>
+                <p className="text-[0.875rem] text-white/50 mt-1.5 leading-relaxed">{currentQuestion.explanation}</p>
               )}
               {currentQuestion?.playbook_ref && (
-                <p className="text-[0.75rem] text-[#2D46B9] mt-2 font-semibold">{currentQuestion.playbook_ref}</p>
+                <p className="text-[0.75rem] text-[#5B7BF5] mt-2 font-semibold">{currentQuestion.playbook_ref}</p>
               )}
             </div>
           </div>
@@ -495,7 +494,7 @@ export default function TestPage() {
         <Button
           onClick={() => submitAnswer(phase === 'second_try' ? 2 : 1)}
           disabled={!selectedOptionId || saving}
-          className="w-full h-12 text-[0.9375rem] font-bold bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg"
+          className="w-full h-12 text-[0.9375rem] font-bold bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg shadow-lg shadow-[#2D46B9]/20"
         >
           {saving ? 'Сохранение...' : 'Ответить'}
         </Button>
@@ -504,7 +503,7 @@ export default function TestPage() {
       {isFeedback && (
         <Button
           onClick={handleNext}
-          className="w-full h-12 text-[0.9375rem] font-bold bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg gap-2"
+          className="w-full h-12 text-[0.9375rem] font-bold bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg gap-2 shadow-lg shadow-[#2D46B9]/20"
         >
           {phase === 'feedback' && lastAnswer && !lastAnswer.isCorrect
             ? 'Вторая попытка'

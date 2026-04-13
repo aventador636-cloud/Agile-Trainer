@@ -32,8 +32,8 @@ export default function ModulesPage() {
     <div className="space-y-6 sm:space-y-8">
       {/* Page header */}
       <div className="flex items-center gap-3 sm:gap-4">
-        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#2D46B9]/20 flex items-center justify-center shrink-0">
-          <svg viewBox="0 0 40 40" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="#2D46B9" strokeWidth="1.8">
+        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#2D46B9]/20 flex items-center justify-center shrink-0">
+          <svg viewBox="0 0 40 40" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="#5B7BF5" strokeWidth="1.8">
             <circle cx="20" cy="20" r="14" />
             <ellipse cx="20" cy="20" rx="6" ry="14" />
             <path d="M7 15 Q13 17.5, 20 17 Q27 16.5, 33 15" />
@@ -41,42 +41,42 @@ export default function ModulesPage() {
           </svg>
         </div>
         <div>
-          <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-[#2D46B9] tracking-tight">Модули обучения</h1>
-          <p className="text-[0.75rem] sm:text-[0.875rem] text-[#9CA3AF] mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
+          <h1 className="text-[1.25rem] sm:text-[1.5rem] font-extrabold text-white tracking-tight">Модули обучения</h1>
+          <p className="text-[0.75rem] sm:text-[0.875rem] text-white/30 mt-0.5">Контент на основе ГПБ Agile PlayBook v2.4</p>
         </div>
       </div>
 
-      {/* Blue gradient divider */}
-      <div className="h-[2px] bg-gradient-to-r from-[#2D46B9] via-[#5B7BF5] to-transparent" />
+      {/* Gradient divider */}
+      <div className="h-px bg-gradient-to-r from-[#2D46B9]/50 via-[#5B7BF5]/30 to-transparent" />
 
       {/* Module grid */}
       <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {userModules.map((mod, i) => (
-          <div key={mod.id} className="gpb-card overflow-hidden group">
+          <div key={mod.id} className="rounded-xl bg-white/[0.03] border border-white/[0.06] overflow-hidden group hover:border-[#2D46B9]/30 transition-all hover:bg-white/[0.05]">
             <div className="p-4 sm:p-5 pb-3 sm:pb-4">
               <div className="flex items-start justify-between mb-3 sm:mb-4">
                 <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="gpb-number-lg text-[1rem] sm:text-[1.125rem]">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-[#2D46B9] to-[#5B7BF5] flex items-center justify-center text-white text-[0.875rem] sm:text-[1rem] font-bold">
                     {mod.order_index}
                   </div>
                   <span className="text-[1.5rem] sm:text-[1.75rem]">{MODULE_ICONS[i] ?? '📘'}</span>
                 </div>
-                <span className="text-[0.625rem] sm:text-[0.6875rem] font-bold text-[#2D46B9] bg-[#F0F3FA] px-2 sm:px-2.5 py-1 rounded-full">
+                <span className="text-[0.625rem] sm:text-[0.6875rem] font-bold text-[#5B7BF5] bg-[#2D46B9]/15 px-2 sm:px-2.5 py-1 rounded-full">
                   Модуль {mod.order_index}
                 </span>
               </div>
 
-              <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-[#1A2340] group-hover:text-[#2D46B9] transition-colors leading-tight">
+              <h3 className="text-[0.9375rem] sm:text-[1.0625rem] font-bold text-white/90 group-hover:text-white transition-colors leading-tight">
                 {mod.title}
               </h3>
-              <p className="text-[0.75rem] sm:text-[0.8125rem] text-[#6B7280] mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
+              <p className="text-[0.75rem] sm:text-[0.8125rem] text-white/30 mt-1.5 sm:mt-2 line-clamp-2 leading-relaxed">{mod.description}</p>
             </div>
 
             <div className="px-4 sm:px-5 pb-4 sm:pb-5 flex gap-2">
               <Link href={`/modules/${mod.id}/test`} className="flex-1">
                 <Button
                   size="sm"
-                  className="w-full bg-[#2D46B9] hover:bg-[#233A9E] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                  className="w-full bg-gradient-to-r from-[#2D46B9] to-[#5B7BF5] hover:from-[#233A9E] hover:to-[#4A6AE5] rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   Тест
@@ -86,7 +86,7 @@ export default function ModulesPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="w-full border-[#2D46B9]/30 text-[#2D46B9] hover:bg-[#2D46B9] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
+                  className="w-full border-white/[0.1] text-white/60 hover:bg-white/[0.06] hover:text-white rounded-lg gap-1.5 font-semibold text-[0.75rem] sm:text-[0.8125rem] h-8 sm:h-9"
                 >
                   <Play className="w-3.5 h-3.5" />
                   Симуляция
