@@ -49,39 +49,39 @@
 }
 
 :root {
-  /* GPB Agile PlayBook 2.4 Design System */
-  --background: #FFFFFF;
-  --foreground: #1A2340;
-  --card: #FFFFFF;
-  --card-foreground: #1A2340;
-  --popover: #FFFFFF;
-  --popover-foreground: #1A2340;
-  --primary: #2D46B9;
+  /* GPB Agile PlayBook 2.4 — Dark Fintech Theme */
+  --background: #0A0F1E;
+  --foreground: #E5E7EB;
+  --card: #111827;
+  --card-foreground: #E5E7EB;
+  --popover: #111827;
+  --popover-foreground: #E5E7EB;
+  --primary: #5B7BF5;
   --primary-foreground: #FFFFFF;
-  --secondary: #F0F3FA;
-  --secondary-foreground: #2D46B9;
-  --muted: #F5F6FA;
-  --muted-foreground: #6B7280;
-  --accent: #3B82F6;
+  --secondary: rgba(255,255,255,0.06);
+  --secondary-foreground: #E5E7EB;
+  --muted: rgba(255,255,255,0.04);
+  --muted-foreground: rgba(255,255,255,0.4);
+  --accent: #5B7BF5;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
-  --border: #E5E8F0;
-  --input: #E5E8F0;
-  --ring: #2D46B9;
+  --border: rgba(255,255,255,0.08);
+  --input: rgba(255,255,255,0.08);
+  --ring: #5B7BF5;
   --chart-1: #2D46B9;
-  --chart-2: #3B82F6;
+  --chart-2: #5B7BF5;
   --chart-3: #6366F1;
   --chart-4: #8B5CF6;
   --chart-5: #06B6D4;
   --radius: 0.625rem;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #1A2340;
-  --sidebar-primary: #2D46B9;
+  --sidebar: #0D1224;
+  --sidebar-foreground: #E5E7EB;
+  --sidebar-primary: #5B7BF5;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F0F3FA;
-  --sidebar-accent-foreground: #2D46B9;
-  --sidebar-border: #E5E8F0;
-  --sidebar-ring: #2D46B9;
+  --sidebar-accent: rgba(255,255,255,0.06);
+  --sidebar-accent-foreground: #5B7BF5;
+  --sidebar-border: rgba(255,255,255,0.06);
+  --sidebar-ring: #5B7BF5;
 }
 
 .dark {
